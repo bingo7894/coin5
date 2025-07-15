@@ -137,6 +137,13 @@
           </div>
         </section>
 
+        <!-- แสดงภาพที่ label แล้ว -->
+        <div class="mt-6">
+          <h3 class="font-semibold text-gray-800 mb-4">ภาพที่มีการตรวจจับ:</h3>
+          <img :src="result?.labeledImage" alt="Labeled Image" />
+        </div>
+        <p>labeledImage = {{ result?.labeledImage }}</p>
+
         <!-- Section: ผลลัพธ์ -->
         <section
           v-if="result"
@@ -336,6 +343,7 @@ interface ProcessResult {
   count: number;
   totalValue: number;
   details: CoinDetail[];
+  labeledImage: string;
 }
 
 // Refs
