@@ -347,7 +347,7 @@ const processImage = async () => {
     formData.append("file", selectedFile.value);
 
     // 1. เรียก API ของ Python เพื่อประมวลผลภาพ
-    const res = await fetch("http://localhost:8000/api/process-image", {
+    const res = await fetch("https://coinbackend-pi6n.onrender.com", {
       method: "POST",
       body: formData,
     });

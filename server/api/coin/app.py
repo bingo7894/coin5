@@ -11,7 +11,10 @@ app = FastAPI()
 
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["*"],  # สำหรับทดสอบ ใช้ "*" ได้
+    allow_origins=[
+        "http://localhost:3000", # สำหรับ local dev
+        "https://coin5-hognkivln-bingo7894s-projects.vercel.app" # <<--- URL จริงของ Vercel App คุณ
+    ],
     allow_methods=["*"],
     allow_headers=["*"],
 )
