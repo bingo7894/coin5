@@ -1,7 +1,8 @@
-import { PrismaClient } from "@prisma/client";
+import pkg from "@prisma/client";
+const PrismaClient = pkg.PrismaClient; // หรือ const { PrismaClient } = pkg;
 
 declare global {
-  var prisma: PrismaClient | undefined;
+  var prisma: InstanceType<typeof PrismaClient> | undefined; // <-- บรรทัดนี้
 }
 
 const db = globalThis.prisma || new PrismaClient();
