@@ -6,8 +6,9 @@
 
 generator client {
   provider = "prisma-client-js"
+  // เพิ่มบรรทัดนี้เข้ามา
+  binaryTargets = ["rhel-openssl-1.0.x", "debian-openssl-1.1.x", "linux-musl", "windows"] // เพิ่ม "windows" ด้วย เพื่อให้คุณพัฒนาบนเครื่องของคุณได้ง่ายขึ้น
 }
-
 datasource db {
   provider = "mongodb"
   url      = env("DATABASE_URL")
