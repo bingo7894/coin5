@@ -5,9 +5,10 @@
 // Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
 
 generator client {
-  provider = "prisma-client-js"
+  provider        = "prisma-client-js"
+  previewFeatures = ["driverAdapters"] // ถ้าคุณไม่ได้ใช้ driver adapters อาจจะลบบรรทัดนี้ก็ได้ แต่มีไว้ก็ไม่เป็นไร
+  binaryTargets   = ["native", "rhel-openssl-1.0.x"] // <-- บรรทัดนี้สำคัญที่สุด!
 }
-
 datasource db {
   provider = "mongodb"
   url      = env("DATABASE_URL")
