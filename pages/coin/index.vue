@@ -347,10 +347,13 @@ const processImage = async () => {
     formData.append("file", selectedFile.value);
 
     // 1. เรียก API ของ Python เพื่อประมวลผลภาพ
-    const res = await fetch("https://coinbackend-pi6n.onrender.com", {
-      method: "POST",
-      body: formData,
-    });
+    const res = await fetch(
+      "https://coinbackend-pi6n.onrender.com/api/process-image",
+      {
+        method: "POST",
+        body: formData,
+      }
+    );
 
     if (!res.ok) throw new Error("Error processing image");
 
