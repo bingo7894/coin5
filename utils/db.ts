@@ -1,13 +1,15 @@
-import { PrismaClient } from '@prisma/client'
-
+import Prisma from "@prisma/client";
+const PrismaClient = Prisma.PrismaClient; // This is the PrismaClient class constructor
 
 declare global {
-    var prisma: PrismaClient | undefined
+  // We want 'prisma' to be an instance of PrismaClient
+  var prisma: InstanceType<typeof PrismaClient> | undefined; // <-- THIS IS THE CRUCIAL CHANGE
 }
 
-const db = globalThis.prisma || new PrismaClient()
+// Reuse the existing global instance or create a new one
+const db = globalThis.prisma || new PrismaClient();
 
-if(process.env.NODE_ENV !== 'production') globalThis.prisma = db 
-
+// In development, keep the global instance so it's not recreated on hot reloads
+if (process.env.NODE_ENV !== "production") globalThis.prisma = db;
 
 export default db;
