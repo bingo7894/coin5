@@ -6,11 +6,13 @@
 
 generator client {
   provider        = "prisma-client-js"
-  previewFeatures = ["driverAdapters"] // ถ้าคุณไม่ได้ใช้ driver adapters อาจจะลบบรรทัดนี้ก็ได้ แต่มีไว้ก็ไม่เป็นไร
-  binaryTargets   = ["native", "rhel-openssl-1.0.x"] // <-- บรรทัดนี้สำคัญที่สุด!
+  // ลบบรรทัด previewFeatures ถ้าคุณไม่ได้ใช้ driver adapters จริงๆ เพื่อลดความซับซ้อน
+  // previewFeatures = ["driverAdapters"]
+  binaryTargets   = ["native", "rhel-openssl-1.0.x", "debian-openssl-1.1.x", "linux-musl"] // <--- บรรทัดนี้สำคัญที่สุด!
 }
+
 datasource db {
-  provider = "mongodb"
+  provider = "mongodb" // <--- ต้องเป็น "mongodb" เท่านั้น
   url      = env("DATABASE_URL")
 }
 
