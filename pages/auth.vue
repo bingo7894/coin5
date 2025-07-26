@@ -31,62 +31,75 @@ const { isLoading, toggleLoading, showMessage, showError } = useStore();
 async function login(event: FormSubmitEvent<LoginSchema>) {
   try {
     toggleLoading(true);
+    console.log("Login: Toggling loading to true."); // Log 1
 
     const response = await $fetch("/api/auth/login", {
       method: "POST",
       body: event.data,
     });
 
-    console.log("Login response:", response); // Debug log
+    console.log("Login: API response received:", response); // Log 2
 
     // Show success message
     showMessage({
       title: "เข้าสู่ระบบสำเร็จ",
       description: "กำลังนำคุณไปยังหน้าหลัก...",
     });
+    console.log("Login: Success message displayed."); // Log 3
 
     // Wait a bit for the message to show
     await new Promise((resolve) => setTimeout(resolve, 1000));
+    console.log("Login: Finished waiting for 1 second."); // Log 4
 
-    // Navigate to home page
-    await navigateTo("/", { replace: true });
+    // Navigate to /coin page
+    await navigateTo("/coin", { replace: true }); // Changed from "/" to "/coin"
+    console.log("Login: Navigation to '/coin' initiated."); // Log 5
   } catch (error) {
-    console.error("Login error:", error);
+    console.error("Login: An error occurred during the login process:", error); // Enhanced error log
     const err = handleError(error);
     showError(err);
   } finally {
     toggleLoading(false);
+    console.log("Login: Toggling loading to false."); // Log 6
   }
 }
 
 async function register(event: FormSubmitEvent<RegisterSchema>) {
   try {
     toggleLoading(true);
+    console.log("Register: Toggling loading to true."); // Log 1
 
     const response = await $fetch("/api/auth/register", {
       method: "POST",
       body: event.data,
     });
 
-    console.log("Register response:", response); // Debug log
+    console.log("Register: API response received:", response); // Log 2
 
     // Show success message
     showMessage({
       title: "สมัครสมาชิกสำเร็จ",
       description: "บัญชีของคุณถูกสร้างเรียบร้อยและได้เข้าสู่ระบบแล้ว",
     });
+    console.log("Register: Success message displayed."); // Log 3
 
     // Wait a bit for the message to show
     await new Promise((resolve) => setTimeout(resolve, 1000));
+    console.log("Register: Finished waiting for 1 second."); // Log 4
 
-    // Navigate to home page
-    await navigateTo("/", { replace: true });
+    // Navigate to /coin page
+    await navigateTo("/coin", { replace: true }); // Changed from "/" to "/coin"
+    console.log("Register: Navigation to '/coin' initiated."); // Log 5
   } catch (error: any) {
-    console.error("Register error:", error);
+    console.error(
+      "Register: An error occurred during the registration process:",
+      error
+    ); // Enhanced error log
     const err = handleError(error);
     showError(err);
   } finally {
     toggleLoading(false);
+    console.log("Register: Toggling loading to false."); // Log 6
   }
 }
 
