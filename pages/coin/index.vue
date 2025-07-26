@@ -6,7 +6,7 @@
     <CoinHeadBar />
 
     <main class="flex-1 p-6">
-      <!-- จำกัดความกว้างและจัดกลาง -->
+      <!-- จำกัดความกว้างและจัดกลาง. -->
       <div class="max-w-lg w-full mx-auto space-y-8">
         <!-- Section: ใช้ภาพจากไหน -->
         <section
