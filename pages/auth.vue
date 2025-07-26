@@ -52,15 +52,19 @@ async function login(event: FormSubmitEvent<LoginSchema>) {
     console.log("Login: Finished waiting for 1 second."); // Log 4
 
     // Navigate to /coin page
-    await navigateTo("/coin", { replace: true }); // Changed from "/" to "/coin"
+    await navigateTo("/coin", { replace: true });
     console.log("Login: Navigation to '/coin' initiated."); // Log 5
+
+    // *** Add this line to refresh the page after navigation ***
+    window.location.reload();
+    console.log("Login: Page refresh initiated."); // Log 6
   } catch (error) {
     console.error("Login: An error occurred during the login process:", error); // Enhanced error log
     const err = handleError(error);
     showError(err);
   } finally {
     toggleLoading(false);
-    console.log("Login: Toggling loading to false."); // Log 6
+    console.log("Login: Toggling loading to false."); // Log 7 (updated log number)
   }
 }
 
@@ -88,8 +92,12 @@ async function register(event: FormSubmitEvent<RegisterSchema>) {
     console.log("Register: Finished waiting for 1 second."); // Log 4
 
     // Navigate to /coin page
-    await navigateTo("/coin", { replace: true }); // Changed from "/" to "/coin"
+    await navigateTo("/coin", { replace: true });
     console.log("Register: Navigation to '/coin' initiated."); // Log 5
+
+    // *** Add this line to refresh the page after navigation ***
+    window.location.reload();
+    console.log("Register: Page refresh initiated."); // Log 6
   } catch (error: any) {
     console.error(
       "Register: An error occurred during the registration process:",
@@ -99,7 +107,7 @@ async function register(event: FormSubmitEvent<RegisterSchema>) {
     showError(err);
   } finally {
     toggleLoading(false);
-    console.log("Register: Toggling loading to false."); // Log 6
+    console.log("Register: Toggling loading to false."); // Log 7 (updated log number)
   }
 }
 
